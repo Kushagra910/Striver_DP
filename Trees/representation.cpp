@@ -20,22 +20,6 @@ void preOrder(Node* head){
   preOrder(head->right);
 }
 
-void inOrder(Node* head){
-  if(head == nullptr){
-    return;
-  }
-  inOrder(head->left);
-  cout << head->val << " ";
-  inOrder(head->right);
-}
-
-
-void postOrder(Node* head){
-  if(head == nullptr) return;
-  postOrder(head->left);
-  postOrder(head->right);
-  cout << head->val << " ";
-}
 int main(){
 
   // Tree creation
@@ -51,11 +35,5 @@ int main(){
   preOrder(myTree);
   cout << endl;
 
-  cout << " Printing InOrder Traversal Using DFS" << endl;
-  inOrder(myTree);
-  cout << endl;
-
-  cout << " Printing PostOrder Traversal using DFS" << endl;
-  postOrder(myTree);
   return 0;
 }
