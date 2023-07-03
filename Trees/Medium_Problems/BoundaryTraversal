@@ -1,0 +1,63 @@
+//Boundary Traversal of binary tree
+
+// add root first 
+// then addleft boundary (first move left then right) excluding leafnodes
+// addleaf nodes 
+// then add right boundary (in reverse order) first move right then left
+// Note: If the root doesn't have a left subtree or right subtree, then the root itself is the left or right boundary. 
+
+// TC = O(h)+O(n)+O(n) = O(n)
+// SC = O(n)
+
+class Solution {
+public:
+    bool isLeaf(Node* node){
+        if(node->left == nullptr && node->right == nullptr) return true;
+        else return false;
+    }
+    
+    void addLeftboundary(Node* node,vector<int>&res){
+        Node* curr = node->left;
+        while(curr!= nullptr){
+            if(!isLeaf(curr)) res.push_back(curr->data);
+            if(curr->left!= nullptr) curr = curr->left;
+            else curr = curr -> right;
+        }
+    }
+    
+    void addleafs(Node* node,vector<int>&res){
+        if(isLeaf(node)){
+            res.push_back(node->data);
+            return;
+        }
+        if(node->left) addleafs(node->left,res);
+        if(node->right) addleafs(node->right,res);
+        
+    }
+    
+    void addrightboundary(Node* node,vector<int>&res){
+        Node* curr = node->right;
+        vector<int>temp;
+        while(curr){
+            if(!isLeaf(curr)) temp.push_back(curr->data);
+            if(curr->right) curr = curr -> right;
+            else curr = curr -> left;
+        }
+        for(int i=temp.size()-1;i>=0;i--){
+            res.push_back(temp[i]);
+        }
+    }
+    vector <int> boundary(Node *root)
+    {
+        //Your code here
+        vector<int>res;
+        if(root == nullptr) return res;
+        if(!isLeaf(root)){
+            res.push_back(root->data);
+        }
+        addLeftboundary(root,res);
+        addleafs(root,res);
+        addrightboundary(root,res);
+        return res;
+    }
+};
