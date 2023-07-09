@@ -23,7 +23,7 @@
                    else dp[i][j] = 0;
                 }
             }
-            int ans = 0;
+            int ans = 0;   // since longest substring is stored in dp just traverse and return it
             for(int i=0;i<=n1;i++){
                 for(int j=0;j<=n2;j++){
                     ans = max(ans,dp[i][j]);
