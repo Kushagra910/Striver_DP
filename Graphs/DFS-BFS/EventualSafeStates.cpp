@@ -19,12 +19,12 @@ class Solution {
         for(auto it:graph[source]){
             if(!vis[it]){  // when nodes are not visited
                 if(dfs(it,graph,vis,path_visited,check) == true) {
-                    check[source] = 0;
+                    check[source] = 0;    // means for node on it you get a cycle so marked not possible
                     return true;
                 }
             }
             else if(path_visited[it]){
-                check[source] = 0;
+                check[source] = 0;// this is not required because initialised earlier
                 return true;
             }
         }
