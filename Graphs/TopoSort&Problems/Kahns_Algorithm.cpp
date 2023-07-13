@@ -26,7 +26,6 @@ vector<int> topologicalSort(vector<vector<int>> &graph, int edges, int nodes) {
     }
 
     queue<int>q;
-    vector<int>vis(nodes,0);
     for(int i=0;i<indegree.size();i++){
         if(indegree[i] == 0){
             q.push(i);
