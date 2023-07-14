@@ -4,7 +4,7 @@
 // Any linear ordering of vertices of a graph such  that if there is a edge btw u and v , u should appear before v 
 // this is the defination of TOPO sort
 
-// Intution = Simply putting nodes in stack after the dfs traversal for that node is over
+// Intuition = Simply putting nodes in stack after the dfs traversal for that node is over
 
 // TC = O(V + E) DFS
 // SC = O(V) + O(V) + O(V) for stack,vis,rss
